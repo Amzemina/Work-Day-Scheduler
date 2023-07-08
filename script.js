@@ -18,11 +18,11 @@ $(document).ready(function () {
   getEventInfo()
   hourColor()
   displayDate()
-  //recolor and date every min
+  //recolor and date every sec
   setInterval(function () {
     hourColor()
     displayDate()
-  }, 60000);
+  }, 1000);
 });
 
 //gets info from localstorage 
@@ -51,10 +51,16 @@ function hourColor() {
 
     if (blockHour < currentHour) {
       $(this).addClass('past');
+      $(this).removeClass('present');
+      $(this).removeClass('future');
     } else if (blockHour === currentHour) {
       $(this).addClass('present');
+      $(this).removeClass('past');
+      $(this).removeClass('future');
     } else {
       $(this).addClass('future');
+      $(this).removeClass('past');
+      $(this).removeClass('present');
     }
   });
 }
