@@ -5,7 +5,15 @@ $(document).ready(function () {
     var eventTime = $(this).parent().attr("id");
 
     localStorage.setItem(eventTime, eventText);
+    //disabled save button when nothing is input, or is already input
+    $(this).prop("disabled", true);
   });
+
+  //when text is input, save button is enabled
+  $("textarea").on('input', function() {
+    $(this).siblings('.saveBtn').prop("disabled", false);
+  })
+
   //populates schedule, colors, and date
   getEventInfo()
   hourColor()
