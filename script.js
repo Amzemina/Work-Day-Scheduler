@@ -6,11 +6,12 @@ $(document).ready(function () {
 
     localStorage.setItem(eventTime, eventText);
   });
+  //populates schedule, colors, and date
   getEventInfo()
-//calls color function every min
   hourColor()
   displayDate()
-  setInterval(function() {
+  //recolor and date every min
+  setInterval(function () {
     hourColor()
     displayDate()
   }, 60000);
@@ -18,31 +19,30 @@ $(document).ready(function () {
 
 //gets info from localstorage 
 function getEventInfo() {
-$('.time-block').each(function() {
-  var textareaValue = localStorage.getItem($(this).attr('id'));
+  $('.time-block').each(function () {
+    var textareaValue = localStorage.getItem($(this).attr('id'));
 
-  var textarea = $(this).children('textarea');
+    var textarea = $(this).children('textarea');
 
-  textarea.val(textareaValue);
-})
+    textarea.val(textareaValue);
+  })
 }
 
 //display todays day and date
-var currentDayEl = $('#currentDay');
-
 function displayDate() {
+  var currentDayEl = $('#currentDay');
   var rightNow = dayjs().format('dddd, MMMM DD, YYYY');
   currentDayEl.text(rightNow);
-  }
+}
 
 //color time function
 function hourColor() {
   var currentHour = dayjs().hour();
-  $('.time-block').each(function() {
-    var blockHour = parseInt($(this).attr('id').replace("hour-", "")); 
+  $('.time-block').each(function () {
+    var blockHour = parseInt($(this).attr('id').replace("hour-", ""));
 
     if (blockHour < currentHour) {
-    $(this).addClass('past');
+      $(this).addClass('past');
     } else if (blockHour === currentHour) {
       $(this).addClass('present');
     } else {
