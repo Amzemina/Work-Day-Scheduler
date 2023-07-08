@@ -3,7 +3,7 @@ $(document).ready(function () {
   $(".saveBtn").click(function () {
     var eventText = $(this).siblings('textarea').val();
     var eventTime = $(this).parent().attr("id");
-
+    
     localStorage.setItem(eventTime, eventText);
     //disabled save button when nothing is input, or is already input
     $(this).prop("disabled", true);
