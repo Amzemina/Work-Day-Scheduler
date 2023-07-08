@@ -10,7 +10,7 @@ $(document).ready(function () {
   });
 
   //when text is input, save button is enabled
-  $("textarea").on('input', function() {
+  $("textarea").on('input', function () {
     $(this).siblings('.saveBtn').prop("disabled", false);
   })
 
